@@ -2,3 +2,13 @@
   font-family: sans-serif;
   text-align: center;
 }
+table {
+  border-collapse: border-collapse;
+  border: 1px solid gray;
+}
+th,
+td {
+  padding: 1rem;
+  border: 1px solid gray;
+  text-align: left;
+}
