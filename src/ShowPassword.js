@@ -1,11 +1,3 @@
-# ReactSnippets
-
-## Show Password
-
-Show the password as text when click on the button
-Usage: useState, conditional rendering, controlled input, default Value
-
-```javascript
 import React, { useState } from "react";
 
 export default function ShowPassword() {
@@ -26,4 +18,3 @@ export default function ShowPassword() {
     </>
   );
 }
-```
