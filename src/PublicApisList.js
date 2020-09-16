@@ -11,7 +11,17 @@ function PublicApisList() {
       });
   }, []);
   // useEffect
-  useEffect(() => getApis(), [getApis]);
+  useEffect(() => {
+    // cleanup subscription/unsubscription
+    let current = true;
+    console.log("subscribed the current state");
+    current && getApis();
+    return () => {
+      console.log("unsubscribed the previous state");
+      current = false;
+    };
+  }, [getApis]);
+  // useEffect(() => getApis(), [getApis]);
 
   return (
     <>
