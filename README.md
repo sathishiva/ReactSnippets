@@ -53,19 +53,67 @@ function PublicApisList() {
       });
   }, []);
   // useEffect
-  useEffect(() => getApis(), [getApis]);
+  useEffect(() => {
+    // cleanup subscription/unsubscription
+    let current = true;
+    console.log("subscribed the current state");
+    current && getApis();
+    return () => {
+      console.log("unsubscribed the previous state");
+      current = false;
+    };
+  }, [getApis]);
+  // useEffect without cleanup
+  // useEffect(() => getApis(), [getApis]);
 
+  const [sortorder, setSortorder] = useState("ascending");
+  const [sortordercolumn, setSortordercolumn] = useState("");
+  const handleColumnSort = (columnName) => {
+    const copyOfApis = [...apis];
+    setSortordercolumn(columnName);
+    const sortedApis = copyOfApis.sort((a, b) => {
+      if (sortorder === "ascending") {
+        setSortorder("descending");
+        return a[columnName] < b[columnName] ? 1 : -1;
+      } else {
+        setSortorder("ascending");
+        return a[columnName] > b[columnName] ? 1 : -1;
+      }
+    });
+    setApis(sortedApis);
+  };
   return (
     <>
       <h2>Public APIs List</h2>
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>
+              <button
+                className={sortordercolumn === "API" && sortorder}
+                onClick={() => handleColumnSort("API")}
+              >
+                Name
+              </button>
+            </th>
             <th>Description</th>
-            <th>Auth</th>
+            <th>
+              <button
+                className={sortordercolumn === "Auth" && sortorder}
+                onClick={() => handleColumnSort("Auth")}
+              >
+                Auth
+              </button>
+            </th>
             <th>Link</th>
-            <th>Category</th>
+            <th>
+              <button
+                className={sortordercolumn === "Category" && sortorder}
+                onClick={() => handleColumnSort("Category")}
+              >
+                Category
+              </button>
+            </th>
           </tr>
         </thead>
         <tbody>

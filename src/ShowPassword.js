@@ -14,7 +14,10 @@ export default function ShowPassword() {
         defaultValue={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={() => setShowPassword(!showPassword)}>
+      <button
+        className="show-password"
+        onClick={() => setShowPassword(!showPassword)}
+      >
         {/* conditional rendering */}
         {showPassword ? "hide " : "show "} password
       </button>
