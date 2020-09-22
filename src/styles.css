@@ -12,18 +12,19 @@ td {
   border: 1px solid gray;
   text-align: left;
 }
-button {
+/* table sorting */
+.api-list-table button {
   padding: 1rem;
   width: 100%;
   border: none;
   outline: none;
   font-weight: bold;
 }
-button.ascending::after {
+.api-list-table button.ascending::after {
   content: "\2191";
   padding-left: 0.2rem;
 }
-button.descending::after {
+.api-list-table button.descending::after {
   content: "\2193";
   padding-left: 0.2rem;
 }
@@ -33,4 +34,13 @@ button.show-password {
   font-weight: normal;
   border: 1px solid red;
   margin-left: 1rem;
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-container button.selected {
+  background: lightskyblue;
 }

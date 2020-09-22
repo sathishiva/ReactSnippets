@@ -43,7 +43,7 @@ function PublicApisList() {
   return (
     <>
       <h2>Public APIs List</h2>
-      <table>
+      <table className="api-list-table">
         <thead>
           <tr>
             <th>
